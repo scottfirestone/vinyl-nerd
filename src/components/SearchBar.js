@@ -1,20 +1,20 @@
 import React from 'react';
-import { Ajax } from 'react-superagent';
+import Request from 'superagent';
 
 class SearchBar extends React.Component {
   searchForUser(event) {
     event.preventDefault();
     let username = this.refs.username.value;
-    console.log(username);
-    // Ajax
-    //   .get("https://api.discogs.com/users"+ username)
-    //   .end(function(err, res) {
-    //     if (err || !res.ok) {
-    //       alert('There seems to be a problem with that username or the discogs api');
-    //     } else {
-    //       alert('yay got '+ JSON.stringify(res.body));
-    //     }
-    //   });
+
+    Request
+      .get('https://api.discogs.com/users/'+ username)
+      .end(function(err, res) {
+        if (err || !res.ok) {
+          alert('There seems to be a problem with that username or the discogs api');
+        } else {
+          alert('yay got '+ JSON.stringify(res.body));
+        }
+      });
   }
 
   render() {
