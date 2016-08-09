@@ -10,9 +10,10 @@
 import React, { Component, PropTypes } from 'react';
 import emptyFunction from 'fbjs/lib/emptyFunction';
 import s from './App.css';
-import Header from '../Header';
-import Feedback from '../Feedback';
-import Footer from '../Footer';
+// import Header from '../Header';
+// import Feedback from '../Feedback';
+// import Footer from '../Footer';
+import LandingPage from '../LandingPage';
 
 class App extends Component {
 
@@ -32,6 +33,14 @@ class App extends Component {
     setMeta: PropTypes.func.isRequired,
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      selectedUser : {}
+    }
+  }
+
   getChildContext() {
     const context = this.props.context;
     return {
@@ -50,13 +59,17 @@ class App extends Component {
     this.removeCss();
   }
 
+  selectUser(user) {
+    this.state.selectedUser = JSON.parse(user);
+    this.setState({
+      selectedUser : user
+    });
+  }
+
   render() {
     return !this.props.error ? (
       <div>
-        <Header />
-        {this.props.children}
-        <Feedback />
-        <Footer />
+        <LandingPage selectUser={this.selectUser.bind(this)}/>
       </div>
     ) : this.props.children;
   }
