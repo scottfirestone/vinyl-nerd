@@ -4,7 +4,8 @@ class LandingPage extends React.Component {
   render() {
     return(
       <div>
-        Hello world
+        <h1>Vinyl Nerd</h1>
+        <h2>Enter a discogs username to get detailed record info!</h2>
       </div>
     )
   }
