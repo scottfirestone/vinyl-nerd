@@ -101,6 +101,7 @@
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.6",
     "sinon": "^2.0.0-pre",
+    "sqlite3": "^3.1.4",
     "stylelint": "^6.6.0",
     "stylelint-config-standard": "^9.0.0",
     "url-loader": "^0.5.7",
