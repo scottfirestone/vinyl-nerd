@@ -4,7 +4,8 @@ import Request from 'superagent';
 class SearchBar extends React.Component {
   searchForUser(event) {
     event.preventDefault();
-    let username = this.refs.username.value;
+    const self = this;
+    const username = this.refs.username.value;
 
     Request
       .get('https://api.discogs.com/users/'+ username)
@@ -12,9 +13,11 @@ class SearchBar extends React.Component {
         if (err || !res.ok) {
           alert('There seems to be a problem with that username or the discogs api');
         } else {
-          alert('yay got '+ JSON.stringify(res.body));
+          const user = JSON.stringify(res.body);
+          console.log(user);
+          self.props.selectUser(user);
         }
-      });
+      })
   }
 
   render() {

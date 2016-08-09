@@ -33,6 +33,14 @@ class App extends Component {
     setMeta: PropTypes.func.isRequired,
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      selectedUser : {}
+    }
+  }
+
   getChildContext() {
     const context = this.props.context;
     return {
@@ -51,10 +59,17 @@ class App extends Component {
     this.removeCss();
   }
 
+  selectUser(user) {
+    this.state.selectedUser = JSON.parse(user);
+    this.setState({
+      selectedUser : user
+    });
+  }
+
   render() {
     return !this.props.error ? (
       <div>
-        <LandingPage />
+        <LandingPage selectUser={this.selectUser.bind(this)}/>
       </div>
     ) : this.props.children;
   }
