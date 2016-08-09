@@ -1,14 +1,25 @@
 import React from 'react';
+import { Ajax } from 'react-superagent';
 
 class SearchBar extends React.Component {
   searchForUser(event) {
     event.preventDefault();
-    console.log("foobar!")
+    let username = this.refs.username.value;
+    console.log(username);
+    // Ajax
+    //   .get("https://api.discogs.com/users"+ username)
+    //   .end(function(err, res) {
+    //     if (err || !res.ok) {
+    //       alert('There seems to be a problem with that username or the discogs api');
+    //     } else {
+    //       alert('yay got '+ JSON.stringify(res.body));
+    //     }
+    //   });
   }
 
   render() {
     return (
-      <form onSubmit={this.searchForUser}>
+      <form onSubmit={this.searchForUser.bind(this)}>
         <h2>Enter a discogs username, or use mine!</h2>
         <input type="text" ref="username" defaultValue="mingus_amongus" required />
         <input type="submit" />
