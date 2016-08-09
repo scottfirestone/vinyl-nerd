@@ -13,6 +13,7 @@ import s from './App.css';
 import Header from '../Header';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
+import LandingPage from '../LandingPage';
 
 class App extends Component {
 
@@ -53,10 +54,7 @@ class App extends Component {
   render() {
     return !this.props.error ? (
       <div>
-        <Header />
-        {this.props.children}
-        <Feedback />
-        <Footer />
+        <LandingPage />
       </div>
     ) : this.props.children;
   }
