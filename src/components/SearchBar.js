@@ -14,7 +14,6 @@ class SearchBar extends React.Component {
           alert('There seems to be a problem with that username or the discogs api');
         } else {
           const user = JSON.stringify(res.body);
-          console.log(user);
           self.props.selectUser(user);
         }
       })
